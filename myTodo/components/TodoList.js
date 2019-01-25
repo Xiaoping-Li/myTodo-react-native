@@ -5,14 +5,27 @@ export default class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            todoText: 'Please add todo',
+            todos: [],
+            newTodo: '',
         };
     }
+
+    handleInput = (newTodo) => this.setState({newTodo});
+
+    
+
+
+
     render() {
         return (
             <View>
-                <Text>Hello world!</Text>
+                <Text>Add Todo here</Text>
+                <TextInput
+                onChangeText={this.handleInput} 
+                value={this.state.newTodo}
+                />
             </View>
+            
         );
     }
 }
