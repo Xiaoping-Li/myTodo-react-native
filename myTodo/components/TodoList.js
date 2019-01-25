@@ -30,7 +30,7 @@ export default class TodoList extends React.Component {
                 />
 
                 <Button
-                    title="Add"
+                    title="Add Todo"
                     onPress={this.handleAddTodo}
                 />
             </View>
