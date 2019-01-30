@@ -1,5 +1,6 @@
 import React from 'react';
-import { TextInput, Text, View, Button } from 'react-native';
+import { TextInput, Text, View, Button, StyleSheet } from 'react-native';
+import Todo from './Todo.js';
 
 export default class TodoList extends React.Component {
     constructor(props) {
@@ -20,21 +21,44 @@ export default class TodoList extends React.Component {
 
 
     render() {
+        
         return (
-            <View>
-                <Text>Add Todo here</Text>
-
-                <TextInput
-                onChangeText={this.handleInput} 
-                value={this.state.newTodo}
-                />
-
-                <Button
-                    title="Add Todo"
-                    onPress={this.handleAddTodo}
-                />
+            <View style={styles.container}>
+                <View style={styles.formContainer}>
+                    <TextInput
+                        onChangeText={this.handleInput} 
+                        value={this.state.newTodo}
+                        style={styles.input}
+                    />
+                
+                    <Button
+                        title="Add"
+                        onPress={this.handleAddTodo}
+                    />   
+                </View>
+                
+                {this.state.todos.map(todo => <View><Todo todo={todo}/></View>)}   
             </View>
             
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+    },
+    formContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    input: {
+        height: 40,
+        width: 300,
+        borderColor: 'red',
+        borderWidth: 2,
+    },
+});

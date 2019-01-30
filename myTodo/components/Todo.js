@@ -1,11 +1,11 @@
 import React from 'react';
-import { TextInput, Text, View } from 'react-native';
+import { View, Text } from 'react-native';
 
 export default class Todo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            todoText: 'Please add todo',
+            complete: false,
         };
     }
     render() {
