@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, } from 'react-native';
+import { View, Text, Button, Switch, StyleSheet } from 'react-native';
 
 export default class Todo extends React.Component {
     constructor(props) {
@@ -17,7 +17,8 @@ export default class Todo extends React.Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
+                {/* <Switch /> */}
                 <Text>{this.props.todo}</Text>
                 <Button
                     title="Delete" 
@@ -27,3 +28,11 @@ export default class Todo extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    }, 
+});
