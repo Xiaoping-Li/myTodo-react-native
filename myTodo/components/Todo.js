@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button, } from 'react-native';
 
 export default class Todo extends React.Component {
     constructor(props) {
@@ -8,10 +8,21 @@ export default class Todo extends React.Component {
             complete: false,
         };
     }
+
+    handleDelete = () => {
+        const idx = this.props.index;
+        this.props.onDelete(idx);
+    }
+
+
     render() {
         return (
             <View>
-                <Text>Hello world!</Text>
+                <Text>{this.props.todo}</Text>
+                <Button
+                    title="Delete" 
+                    onPress={this.handleDelete}
+                />
             </View>
         );
     }

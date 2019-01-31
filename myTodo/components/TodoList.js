@@ -18,10 +18,12 @@ export default class TodoList extends React.Component {
         this.setState({ newTodo: '' });
     }
 
-
+    handleDelete = (idx) => {
+        this.state.todos.splice(idx, 1);
+        this.setState({todos: this.state.todos});
+    }
 
     render() {
-        
         return (
             <View style={styles.container}>
                 <View style={styles.formContainer}>
@@ -37,7 +39,14 @@ export default class TodoList extends React.Component {
                     />   
                 </View>
                 
-                {this.state.todos.map(todo => <View><Todo todo={todo}/></View>)}   
+                {this.state.todos.map((todo, idx) => <View>
+                    <Todo
+                        key={idx} 
+                        todo={todo} 
+                        index={idx}
+                        onDelete={this.handleDelete}
+                    />
+                </View>)}   
             </View>
             
         );
